@@ -11,6 +11,7 @@ import { TbaOwnedNft } from "@/lib/types";
 import { getAddress } from "viem";
 import { TokenDetail } from "./TokenDetail";
 import { HAS_CUSTOM_IMPLEMENTATION, alchemyApiKey } from "@/lib/constants";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui";
 
 interface TokenParams {
   params: {
@@ -132,6 +133,10 @@ export default function Token({ params, searchParams }: TokenParams) {
       if (lensNfts) {
         setTokens([...nfts, ...lensNfts]);
       }
+
+      setTimeout(() => {
+        setShowTokenDetail(true);
+      }, 1000);
     }
   }, [nfts, approvalData, lensNfts]);
 
@@ -167,13 +172,14 @@ export default function Token({ params, searchParams }: TokenParams) {
                 <div className="pb-5 text-2xl text-black">Learning Buddies Collected</div>
                 {!isNil(nftImages) ? (
                   nftImages.map((image, i) => (
-                    <img
-                      key={i}
-                      className="w-48 cursor-pointer"
-                      src={image}
-                      alt="Nft image"
-                      onClick={() => setShowTokenDetail(!showTokenDetail)}
-                    />
+                    <div key={i}>
+                      <img
+                        className="w-48 cursor-pointer"
+                        src={image}
+                        alt="Nft image"
+                        onClick={() => setShowTokenDetail(!showTokenDetail)}
+                      />
+                    </div>
                   ))
                 ) : (
                   <></>
