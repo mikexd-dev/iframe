@@ -17,7 +17,7 @@ interface Props {
 
 const variants = {
   closed: { y: "100%", transition: { duration: 0.75 } },
-  open: { y: "0", transition: { duration: 0.75 }, height: "85%" },
+  open: { y: "0", transition: { duration: 0.75 }, height: "60%" },
 } as Variants;
 
 const iconVariant = {
@@ -60,29 +60,27 @@ export const TokenDetail = ({
   return (
     <div className={className}>
       <motion.div
-        className="absolute left-4 top-4 z-10 rounded-full cursor-pointer"
+        className="absolute left-4 top-10 z-10 cursor-pointer rounded-full"
         whileHover="hover"
         variants={iconVariant}
         initial="unHovered"
       >
-        <CustomLogo onClick={() => handleOpenClose(!isOpen)} />
+        {/* <CustomLogo onClick={() => handleOpenClose(!isOpen)} /> */}
       </motion.div>
-      {isOpen && (
-        <motion.div
-          className={`custom-scroll absolute bottom-0 z-10 w-full max-w-[1080px] overflow-y-auto`}
-          animate={currentAnimate}
-          variants={variants}
-          initial="closed"
-        >
-          <Panel
-            approvalTokensCount={approvalTokensCount}
-            account={account}
-            tokens={tokens}
-            title={title}
-            chainId={chainId}
-          />
-        </motion.div>
-      )}
+      <motion.div
+        className={`custom-scroll absolute bottom-0 z-10 w-full max-w-[1080px] overflow-y-auto p-5`}
+        animate={currentAnimate}
+        variants={variants}
+        initial="closed"
+      >
+        <Panel
+          approvalTokensCount={approvalTokensCount}
+          account={account}
+          tokens={tokens}
+          title={title}
+          chainId={chainId}
+        />
+      </motion.div>
     </div>
   );
 };

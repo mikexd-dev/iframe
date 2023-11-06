@@ -3,9 +3,10 @@
 interface Props {
   url: string;
   isVideo: boolean;
+  token: any;
 }
 
-export const MediaViewer = ({ url, isVideo = false }: Props) => {
+export const MediaViewer = ({ url, isVideo = false, token }: Props) => {
   if (isVideo) {
     let videoUrl = url;
     const ipfs = url.includes("ipfs");
@@ -21,12 +22,16 @@ export const MediaViewer = ({ url, isVideo = false }: Props) => {
   }
 
   return (
-    <img
-      className="aspect-square rounded-xl object-cover"
-      src={url}
-      alt="token image"
-      width={1080}
-      height={1080}
-    />
+    <div className="flex flex-col gap-y-2 text-black">
+      <img
+        className="aspect-[16/9] rounded-xl object-cover"
+        src={url}
+        alt="token image"
+        width={1080}
+        height={900}
+      />
+      <div className="text-sm font-semibold">{token.title}</div>
+      <div className="w-[95%] text-xs">{token.description}</div>
+    </div>
   );
 };

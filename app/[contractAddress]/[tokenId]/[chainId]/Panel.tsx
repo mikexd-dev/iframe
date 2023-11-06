@@ -12,7 +12,7 @@ import { getEtherscanLink, shortenAddress } from "@/lib/utils";
 import { chainIdToOpenseaAssetUrl } from "@/lib/constants";
 
 export const TABS = {
-  COLLECTIBLES: "Collectibles",
+  COLLECTIBLES: "Courses",
   ASSETS: "Assets",
 };
 
@@ -57,7 +57,7 @@ export const Panel = ({
       <div className="mb-4 flex w-full items-center justify-center">
         <div className="h-[2.5px] w-[34px] bg-[#E4E4E4]"></div>
       </div>
-      <h1 className="text-base font-bold uppercase text-black">{title}</h1>
+      <h1 className="text-base font-bold uppercase text-black">Learning Buddy: {title}</h1>
 
       {account && displayedAddress && (
         <div className="flex items-center justify-start space-x-2">
@@ -112,8 +112,9 @@ export const Panel = ({
       />
       <TabPanel value={TABS.COLLECTIBLES} currentTab={currentTab}>
         {tokens && tokens.length ? (
-          <ul className="custom-scroll grid grid-cols-3 gap-2 overflow-y-auto">
+          <ul className="custom-scroll grid grid-cols-3 gap-3 overflow-y-auto">
             {tokens.map((t, i) => {
+              console.log(t, "token");
               let media = t?.media[0]?.gateway || t?.media[0]?.raw;
               const isVideo = t?.media[0]?.format === "mp4";
               if (isVideo) {
@@ -125,7 +126,7 @@ export const Panel = ({
               return (
                 <li key={`${t.contract.address}-${t.tokenId}-${i}`} className="list-none">
                   <a href={openseaUrl} target="_blank" className="cursor-pointer">
-                    <MediaViewer url={media} isVideo={isVideo} />
+                    <MediaViewer url={media} isVideo={isVideo} token={t} />
                   </a>
                 </li>
               );

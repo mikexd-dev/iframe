@@ -136,7 +136,7 @@ export default function Token({ params, searchParams }: TokenParams) {
   }, [nfts, approvalData, lensNfts]);
 
   const showLoading = disableloading !== "true" && nftMetadataLoading;
-
+  console.log(nfts, approvalData, lensNfts);
   return (
     <div className="h-screen w-screen bg-slate-100">
       <div className="max-w-screen relative mx-auto aspect-square max-h-screen overflow-hidden bg-white">
@@ -160,17 +160,19 @@ export default function Token({ params, searchParams }: TokenParams) {
               </div>
             ) : (
               <div
-                className={`bg-white h-full w-full grid grid-cols-1 grid-rows-1 transition ${
+                className={`flex h-full w-full flex-col items-start justify-start bg-white p-10 transition ${
                   imagesLoaded ? "" : "blur-xl"
                 }`}
               >
+                <div className="pb-5 text-2xl text-black">Learning Buddies Collected</div>
                 {!isNil(nftImages) ? (
                   nftImages.map((image, i) => (
                     <img
                       key={i}
-                      className="col-span-1 col-start-1 row-span-1 row-start-1 translate-x-0"
+                      className="w-48 cursor-pointer"
                       src={image}
                       alt="Nft image"
+                      onClick={() => setShowTokenDetail(!showTokenDetail)}
                     />
                   ))
                 ) : (
