@@ -51,7 +51,7 @@ export const Panel = ({
     <div
       className={clsx(
         className,
-        "custom-scroll h-full space-y-3 overflow-y-auto rounded-t-xl border-t-0 bg-white px-5 pt-5"
+        "custom-scroll h-full space-y-3 overflow-y-auto rounded-t-xl border-t-0 bg-white "
       )}
     >
       <div className="mb-4 flex w-full items-center justify-center">
@@ -96,11 +96,11 @@ export const Panel = ({
         </div>
       )}
       {approvalTokensCount ? (
-        <div className="flex items-start space-x-2 rounded-lg border-0 bg-tb-warning-secondary p-2">
+        <div className="bg-tb-warning-secondary flex items-start space-x-2 rounded-lg border-0 p-2">
           <div className="h-5 min-h-[20px] w-5 min-w-[20px]">
             <Exclamation />
           </div>
-          <p className="text-xs text-tb-warning-primary">
+          <p className="text-tb-warning-primary text-xs">
             {`There are existing approvals on (${approvalTokensCount}) tokens owned by this account. Check approval status on tokenbound.org before purchasing.`}
           </p>
         </div>

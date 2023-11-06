@@ -143,7 +143,7 @@ export default function Token({ params, searchParams }: TokenParams) {
   const showLoading = disableloading !== "true" && nftMetadataLoading;
   console.log(nfts, approvalData, lensNfts);
   return (
-    <div className="h-screen w-screen bg-slate-100">
+    <div className="h-screen w-screen border-none bg-white">
       <div className="max-w-screen relative mx-auto aspect-square max-h-screen overflow-hidden bg-white">
         <div className="relative h-full w-full">
           {account && nftImages && nftMetadata && (
@@ -158,14 +158,14 @@ export default function Token({ params, searchParams }: TokenParams) {
               logo={logo}
             />
           )}
-          <div className="max-h-1080[px] relative h-full w-full max-w-[1080px]">
+          <div className="relative h-full w-full max-w-[1080px]">
             {showLoading ? (
               <div className="absolute left-[45%] top-[50%] z-10 h-20 w-20 -translate-x-[50%] -translate-y-[50%] animate-bounce">
                 <TbLogo />
               </div>
             ) : (
               <div
-                className={`flex h-full w-full flex-col items-start justify-start bg-white p-10 transition ${
+                className={`flex h-full w-full flex-col items-start justify-start bg-white transition ${
                   imagesLoaded ? "" : "blur-xl"
                 }`}
               >

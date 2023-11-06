@@ -68,7 +68,7 @@ export const TokenDetail = ({
         {/* <CustomLogo onClick={() => handleOpenClose(!isOpen)} /> */}
       </motion.div>
       <motion.div
-        className={`custom-scroll absolute bottom-0 z-10 w-full max-w-[1080px] overflow-y-auto p-5`}
+        className={`custom-scroll absolute bottom-0 z-10 w-full max-w-[1080px] overflow-y-auto`}
         animate={currentAnimate}
         variants={variants}
         initial="closed"
